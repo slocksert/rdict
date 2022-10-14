@@ -50,11 +50,7 @@ def home(request):
                 dictionary['audio'] = audio
                 dictionary['origin'] = origin
                 dictionary['pos'] = pos
-                example = data2['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]['examples'][0]['text']
-                dictionary['example'] = example
-                sym1 = data2['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]['synonyms'][0]['text']
-                dictionary['sym1'] = sym1
-                return render(request, 'index.html', dictionary)
+                return render(request, 'index2.html', dictionary)
             
             except ValueError:
                 data2 = response2.json()
@@ -69,4 +65,4 @@ def home(request):
                 dictionary['audio'] = audio
                 dictionary['origin'] = origin
                 dictionary['pos'] = pos
-                return render(request, 'index.html', dictionary)
+                return render(request, 'index2.html', dictionary)
