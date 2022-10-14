@@ -52,7 +52,8 @@ def home(request):
                 dictionary['pos'] = pos
                 return render(request, 'index2.html', dictionary)
             
-            except ValueError:
+            except Exception as err:
+                print(err)
                 data2 = response2.json()
                 dictionary = {}
                 word = data2['word'].upper()
