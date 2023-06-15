@@ -1,2 +1,2 @@
 # RDICT
-- https://random-dictionary.herokuapp.com/
+- randomdict.up.railway.app
