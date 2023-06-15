@@ -1,2 +1,2 @@
 # RDICT
-- randomdict.up.railway.app
+- https://randomdict.up.railway.app/
