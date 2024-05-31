@@ -1,19 +1,54 @@
-<!DOCTYPE html>
-<html lang="en-us">
-<head>
-    <meta charset="UTF-8">
-    <title>RDICT</title>
-</head>
-<body>
-    <div><h1>{{word}}</h1></div>
-    <div><p>Phonetic: {{phonetic}}</p></div>
-    <div><p>Definition: {{origin}}</p></div>
-    <div><p>Part of Speech: {{pos}}</p></div>
-    <div><p>Example: {{example}}</p></div>
-    <div><p>Synonym: {{sym1}}</p></div>
-    <div><audio controls><source src="{{audio}}" type="audio/mpeg"></audio></div>
-</body>
-<footer>
-    Made by <a href="https://github.com/slocksert" target="_blank">slocksert</a>
-</footer>
-</html>
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="item">
+        <h1 id="word-title">{{ word|upper }} <span id="favorite-star" class="star">★</span> </h1>
+        {% if meanings %}
+            {% with first_meaning=meanings.0 %}
+                <h2>{{ first_meaning.partOfSpeech|upper }}</h2>
+                <ul>
+                    {% for definition in first_meaning.definitions %}
+                        {% if forloop.first %}
+                            <li>{{ definition.definition }} {% if definition.example %}<em>(Example: {{ definition.example }})</em>{% endif %}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endwith %}
+        {% endif %}
+        {% for phonetic in phonetics %}
+            {% if forloop.first and phonetic.audio %}
+                <audio controls><source src="{{ phonetic.audio }}" type="audio/mpeg"></audio>
+                {% if phonetic.text %}
+                    <p>Phonetic: {{ phonetic.text }}</p>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var word = "{{ word }}";
+            var new_word = word.charAt(0).toUpperCase() + word.slice(1);
+            let savedWords = JSON.parse(localStorage.getItem('savedWords')) || [];
+
+            const starElement = document.getElementById('favorite-star');
+            if (savedWords.includes(new_word)) {
+                starElement.classList.add('filled');
+            }
+
+            starElement.addEventListener('click', function() {
+                if (!savedWords.includes(new_word)) {
+                    starElement.classList.add('filled');
+
+                    setTimeout(function() {
+                        savedWords.push(new_word);
+                        localStorage.setItem('savedWords', JSON.stringify(savedWords));
+                        alert("Word: " + new_word + " has been saved!");
+                    }, 500);
+                } else {
+                    alert(word + " is already saved!");
+                }
+            });
+        });
+    </script>
+{% endblock %}

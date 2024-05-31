@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="item">
+        <h1>Saved Words</h1>
+        <ul id="saved-words-list">
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let savedWords = JSON.parse(localStorage.getItem('savedWords')) || [];
+            let savedWordsList = document.getElementById('saved-words-list');
+
+            if (savedWords.length > 0) {
+                savedWords.forEach(function(word) {
+                    let li = document.createElement('li');
+                    li.textContent = word;
+                    li.classList.add('clickable-word');
+                    li.setAttribute('data-word', word);
+                    savedWordsList.appendChild(li);
+                });
+            } else {
+                savedWordsList.textContent = "No words saved yet.";
+            }
+
+            document.querySelectorAll('.clickable-word').forEach(function(element) {
+                element.addEventListener('click', function() {
+                    const word = this.getAttribute('data-word');
+                    window.location.href = `/word/${word}`;
+                });
+            });
+        });
+    </script>
+{% endblock %}
