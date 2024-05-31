@@ -1,0 +1,137 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    background-color: rgba(0, 0, 0, 0.863);
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 10px;
+    align-items: center;
+    letter-spacing: 0.2rem;
+}
+
+.header li a {
+    text-decoration: none;
+    color: white;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #eeeeee;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    margin: 15rem auto 2rem auto;
+    padding: 1rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.2rem;
+    max-width: 90%;
+}
+
+h1, h2, h3 {
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    padding: 1rem;
+}
+
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h2, h3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+.item li {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: black;
+}
+
+#saved-words-list li {
+    cursor: pointer;
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-panel {
+    background-color: #ffffff;
+}
+
+audio {
+    margin: 1rem;
+}
+
+.star {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.star.filled {
+    color: gold;
+}
+
+footer {
+    margin-top: 2rem;
+    text-align: center;
+    color: #fff;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+    letter-spacing: 0.1rem;
+}
+
+/* Responsividade */
+@media (min-width: 576px) {
+    .item {
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 768px) {
+    .item {
+        max-width: 70%;
+    }
+}
+
+@media (min-width: 992px) {
+    .item {
+        max-width: 60%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .item {
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 1600px) {
+    .item {
+        max-width: 40%;
+    }
+}
+
+@media (min-width: 1920px) {
+    .item {
+        max-width: 30%;
+    }
+}
+
+@media (min-width: 2560px) {
+    .item {
+        max-width: 25%;
+    }
+}
