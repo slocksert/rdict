@@ -14,8 +14,8 @@
 <body>
     {% block header %}
         <ul class="header">
-            <li><a href="https://rdict.onrender.com">HOME</a></li>
-            <li><a href="https://rdict.onrender.com/words">SAVED WORDS</a></li>
+            <li><a id="home-link" href="#">HOME</a></li>
+            <li><a id="saved-words-link" href="#">SAVED WORDS</a></li>
         </ul>
     {% endblock %}
 
@@ -28,5 +28,11 @@
             Made by <a href="https://github.com/slocksert" target="_blank">slocksert</a>
         </footer>
     {% endblock %}
+
+    <script>
+        var baseUrl = window.location.origin
+        document.getElementById('home-link').href = baseUrl
+        document.getElementById('saved-words-link').href = baseUrl + "/words"
+    </script>
 </body>
 </html>
