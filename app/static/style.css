@@ -8,6 +8,12 @@ html {
     background-color: rgba(0, 0, 0, 0.863);
 }
 
+.favorite-li{
+    display: flex;
+    gap: 1rem;
+    margin: 0.5rem;
+}
+
 .header {
     display: flex;
     flex-direction: row;
